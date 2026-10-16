@@ -1,0 +1,43 @@
+Multiple testing
+
+### The problem with multiple testing
+
+Hawthorn can modestly lower blood pressure in people with pre-hypertension or mild hypertension
+
+As a homeopathic medicine, which contains no active ingredients, it has no effect on blood pressure
+
+population: 10 people with diagnosed high bp (average over 24hr)
+two measurement: before taking hawthorn homo mu=145 s=1
+difference
+null hypothesis: Hawthorn homeopathy has no effect in blood pressure
+therefore mean bp before and after taking hawthorn homeopathy is the same
+t-test of change in bp
+as expected no sig diff. p > 0.05
+
+let's repeat the study again p>0.05
+and again p > 0.05
+and again p < 0.05 : a false positive (we declared it as sig, when we know it had no effect on bp, also called a type I error)
+
+Let's do 100 experiments and plot the p-values of these in a histogram
+
+5 false positive (or 5% if experiments give false positive results)
+
+If the null hypothesis is true, 5% of your experiments will give a false positive.
+
+### Two main methods to control for multiple testing
+
+- The Holm method (published by Sture Holm in 1979)
+    - Use when false positives are costly
+        - Clinical trials, safety decisions, regulatory settings
+        - A small number of pre-specified comparisons
+        - Confirmatory / significance testing studies
+
+- The Benjamini–Hochberg method (published in 1995)
+    - Use when you're screening and can tolerate some false leads
+        - Genomics, proteomics, neuroimaging (hundreds–thousands of tests)
+        - Exploratory/discovery phase where follow-up validation will catch false positives
+
+
+### Holm: Comparing treatments to a control
+
+### Benjamini–Hochberg:
