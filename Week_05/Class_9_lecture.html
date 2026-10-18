@@ -219,6 +219,10 @@
 </section>
 <section id="inferential-statistics-this-week-and-next" class="slide level3">
 <h3>Inferential statistics this week and next</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+
+</div><div class="column" style="width:60%;">
 <div style="font-size: 1.5em;">
 <ol type="1">
 <li class="fragment">Estimation</li>
@@ -227,6 +231,9 @@
 <li class="fragment">Multiple testing</li>
 </ol>
 </div>
+</div><div class="column" style="width:10%;">
+
+</div></div>
 </section>
 <section id="estimating-population-parameters" class="slide level3">
 <h3>Estimating population parameters</h3>
@@ -342,39 +349,43 @@
 </table>
 </div></div>
 </section>
-<section id="distribution-of-dive-durations" class="slide level3 smaller">
+<section id="distribution-of-dive-durations" class="slide level3">
 <h3>Distribution of dive durations</h3>
-<div id="735d0c12" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="474" height="395"></p>
-</figure>
-</div>
-</div>
-</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="Images/fig1.png"></p>
+</div><div class="column" style="width:50%;">
 <ul>
 <li class="fragment">The mean dive duration of this sample is 49.2 minutes</li>
 <li class="fragment">But we would like to know the overall mean duration of all Weddell seal dives</li>
 <li class="fragment">This is called the <strong>population mean</strong>, usually denoted <span class="math inline">\(\mu\)</span></li>
 </ul>
+</div></div>
 </section>
-<section id="distribution-of-dive-durations-1" class="slide level3 smaller">
+<section id="distribution-of-dive-durations-1" class="slide level3">
 <h3>Distribution of dive durations</h3>
-
-<img data-src="Images/fig1.png" class="quarto-figure quarto-figure-center r-stretch"><ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="Images/fig1.png"></p>
+</div><div class="column" style="width:50%;">
+<ul>
 <li class="fragment">But we can never know the population mean because we can’t measure every single dive</li>
 <li class="fragment">The best we can do is estimate it</li>
 </ul>
+</div></div>
 </section>
 <section id="distribution-of-dive-durations-2" class="slide level3 smaller">
 <h3>Distribution of dive durations</h3>
-
-<img data-src="Images/fig1.png" class="quarto-figure quarto-figure-center r-stretch"><ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="Images/fig1.png"></p>
+</div><div class="column" style="width:50%;">
+<ul>
 <li class="fragment"><p>A <strong>point estimate</strong> of the population mean is usually denoted <span class="math inline">\(\hat{\mu}\)</span></p></li>
 <li class="fragment"><p>The best point estimate of the population mean is the sample mean:</p>
 <p><span class="math display">\[\hat{\mu} = \bar{x} = 49.2\, \text{mins}\]</span></p></li>
 </ul>
+</div></div>
 </section>
 <section id="a-point-estimate-is-not-enough-information" class="slide level3">
 <h3>A point estimate is not enough information</h3>
@@ -517,71 +528,180 @@
 </section>
 <section id="a-point-estimate-is-not-enough-information-1" class="slide level3">
 <h3>A point estimate is not enough information</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
-<li class="fragment">We have just one point estimate of the population mean (<span class="math inline">\(\hat{\mu} =\)</span> 49.2 minutes)</li>
-<li class="fragment">But there is some uncertainty in its value because only 10 dives were recorded</li>
-<li class="fragment">How much uncertainty is there? For example, is it:
+<li class="fragment"><p>We have just one point estimate of the population mean (<span class="math inline">\(\hat{\mu} =\)</span> 49.2 minutes)</p></li>
+<li class="fragment"><p>But there is some uncertainty in its value because only 10 dives were recorded</p>
+<p><span class="math display">\[\hat{\mu} = 49.2 \pm \text{uncertainty}\]</span></p></li>
+<li class="fragment"><p>How much uncertainty is there? For example, is it:</p>
 <ul>
-<li class="fragment">49.2 <span class="math inline">\(\pm\)</span> 10 mins (around 39 and 59 mins)?</li>
-<li class="fragment">49.2 <span class="math inline">\(\pm\)</span> 1 mins (around 48 and 50 mins)?</li>
-<li class="fragment">49.2 <span class="math inline">\(\pm\)</span> 0.1 mins (around 49.1 and 49.3 mins)?</li>
+<li class="fragment">49.2 <span class="math inline">\(\pm\)</span> 10 mins (around 39 to 59 mins)?</li>
+<li class="fragment">49.2 <span class="math inline">\(\pm\)</span> 1 mins (around 48 to 50 mins)?</li>
 </ul></li>
-<li class="fragment">We need to quantify the uncertainty in dive durations</li>
+<li class="fragment"><p>We must quantify the uncertainty in dive durations</p></li>
 </ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="Images/fig1.png"></p>
+</div></div>
 </section>
-<section id="a-point-estimate-is-not-enough-information-2" class="slide level3">
-<h3>A point estimate is not enough information</h3>
+<section id="the-uncertainty-in-the-estimate-of-a-population-mean" class="slide level3">
+<h3>The uncertainty in the estimate of a population mean</h3>
+<p>There are two common methods of reporting the uncertainty in the estimate of a population mean</p>
+<ol type="1">
+<li class="fragment">Standard error of the mean (SEM)
 <ul>
-<li class="fragment">This uncertainty is called <strong>sampling error</strong>
-<ul>
-<li class="fragment">So you can ask, how much error is there in the point estimate?</li>
+<li class="fragment">Good when your sample size is more than about 20</li>
+<li class="fragment">But is inaccurate when the sample size is less than about 20</li>
 </ul></li>
-<li class="fragment">The inverse of error is <strong>precision</strong>.
+<li class="fragment">95% confidence interval
 <ul>
-<li class="fragment">So you can also ask, how precise is the point estimate?</li>
+<li class="fragment">Good for all sample sizes</li>
+<li class="fragment">SEM is used to calculate 95% CI</li>
 </ul></li>
-<li class="fragment">In conclusion, the full information we require is:
-<ul>
-<li class="fragment">a point estimate of the population mean</li>
-<li class="fragment">the error (or precision) associated with that estimate</li>
-</ul></li>
-<li class="fragment"><span class="orange">What determines the size of the error, and how do we calculate it?</span></li>
-</ul>
+</ol>
 </section>
-<section id="the-error-in-the-estimate-of-a-population-mean" class="slide level3">
-<h3>The error in the estimate of a population mean</h3>
-<p>The error in the estimate of the population mean is called <strong>Standard error of the mean</strong>.</p>
-<div class="fragment">
+<section id="the-standard-error-of-the-mean" class="slide level3">
+<h3>The standard error of the mean</h3>
+<p>The formula for the standard error of the mean is</p>
 <p><span class="math display">\[
-\begin{align*}
-\text{SEM} &amp;= \frac{\text{Standard deviation of the sample}}{\text{Square root of number of observations}} \\
-\text{SEM} &amp;= \frac{s}{\sqrt{n}}
-\end{align*}
+\text{SEM} = \frac{\text{Standard deviation of the sample}}{\text{Square root of number of observations}} = \frac{s}{\sqrt{n}}
 \]</span></p>
-</div>
-<div class="fragment center orange">
-<p>Where does this formula come from?</p>
-</div>
-</section>
-<section id="the-sampling-distribution" class="slide level3">
-<h3>The sampling distribution</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>If you had an infinite number of samples, each with <span class="math inline">\(n\)</span> observations, the distribution of their means is called a sampling distribution.</p>
 <div class="fragment">
-<p>The mean of our single sample is one of the infinite number of means.</p>
-</div>
-</div><div class="column" style="width:50%;">
-<div id="8aafb534" class="cell" data-execution_count="3">
+<div id="48b21ed8" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="474" height="626"></p>
+<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="474" height="395"></p>
 </figure>
 </div>
 </div>
 </div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="fragment">
+<p><br> <br> <br> <br> Where does this formula come from?</p>
+</div>
 </div></div>
+</section>
+<section id="the-sampling-distribution" class="slide level3" data-auto-animate="true">
+<h3 data-id="quarto-animate-title">The sampling distribution</h3>
+<ul>
+<li class="fragment">Say you had 10,000 samples, each of 10 dive durations</li>
+<li class="fragment">Each sample has a mean. These will differ between samples</li>
+<li class="fragment">The distribution of these 10,000 means is called a sampling distribution</li>
+</ul>
+<div class="fragment">
+<div data-id="f1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Images/fig2.png" class="quarto-figure quarto-figure-center" width="400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="the-sampling-distribution-1" class="slide level3" data-auto-animate="true">
+<h3 data-id="quarto-animate-title">The sampling distribution</h3>
+<div data-id="f1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Images/fig2.png" class="quarto-figure quarto-figure-center" width="400"></p>
+</figure>
+</div>
+</div>
+<ul>
+<li class="fragment">So samples of 10 dive durations have means roughly in the range 45 to 55 minutes</li>
+</ul>
+</section>
+<section id="the-sampling-distribution-2" class="slide level3 auto-animate-restart" data-auto-animate="true">
+<h3 data-id="quarto-animate-title">The sampling distribution</h3>
+<div data-id="f3">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Images/fig3.png" class="quarto-figure quarto-figure-center" width="400"></p>
+</figure>
+</div>
+</div>
+<ul>
+<li>So samples of 10 dive durations have means roughly in the range 45 to 55 minutes</li>
+<li>That’s a range of about ± 5 minutes</li>
+</ul>
+<ul>
+<li class="fragment">The width of the sampling distribution tells us the uncertainty in an estimate of the population mean</li>
+</ul>
+</section>
+<section id="the-sampling-distribution-3" class="slide level3" data-auto-animate="true">
+<h3 data-id="quarto-animate-title">The sampling distribution</h3>
+<ul>
+<li class="fragment">The mean of the sample measured by the marine biologists will lie somewhere in this sampling distribution</li>
+<li class="fragment">So the uncertainty in the population mean estimate of 49.2 minutes is about ± 5 minutes</li>
+</ul>
+<div data-id="f3">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Images/fig3.png" class="quarto-figure quarto-figure-center" width="400"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="the-sampling-distribution-4" class="slide level3" data-auto-animate="true">
+<h3 data-id="quarto-animate-title">The sampling distribution</h3>
+<div data-id="f3">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Images/fig3.png" class="quarto-figure quarto-figure-center" width="400"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="the-sampling-distribution-5" class="slide level3" data-auto-animate="true">
+<h3 data-id="quarto-animate-title">The sampling distribution</h3>
+<div data-id="f3">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Images/fig4.png" class="quarto-figure quarto-figure-center" width="400"></p>
+</figure>
+</div>
+</div>
+<ul>
+<li>Actually we don’t use the <strong>range</strong> of the sampling distribution, instead we use its <strong>standard deviation</strong></li>
+</ul>
+<ul>
+<li class="fragment">The standard deviation of the sampling distribution is called the <strong>standard error of the mean</strong></li>
+</ul>
+</section>
+<section id="the-sampling-distribution-6" class="slide level3 auto-animate-restart" data-auto-animate="true">
+<h3 data-id="quarto-animate-title">The sampling distribution</h3>
+<p>It turns out, and you can prove this mathematically, that SEM is related to:</p>
+<ol type="1">
+<li class="fragment">the variability of all dive durations (the population standard deviation, <span class="math inline">\(\sigma\)</span>) and</li>
+<li class="fragment">the sample size, <span class="math inline">\(n\)</span></li>
+</ol>
+<div class="fragment">
+<p><span class="math display">\[
+\text{SEM} = \frac{\text{Standard deviation of the population}}{\text{Square root of number of observations}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
+</div>
+</section>
+<section id="the-sampling-distribution-7" class="slide level3" data-auto-animate="true">
+<h3 data-id="quarto-animate-title">The sampling distribution</h3>
+<p><span class="math display">\[
+\text{SEM} = \frac{\text{Standard deviation of the population}}{\text{Square root of number of observations}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
+<ul>
+<li class="fragment">However, we don’t know the standard deviation of the population, <span class="math inline">\(\sigma\)</span></li>
+<li class="fragment">But we do know the standard deviation of the sample, <span class="math inline">\(s\)</span></li>
+<li class="fragment"><span class="math inline">\(s\)</span> is an estimate of <span class="math inline">\(\sigma\)</span></li>
+<li class="fragment">So replace <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(s\)</span></li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[
+\text{SEM} = \frac{\text{Standard deviation of the sample}}{\text{Square root of number of observations}} = \frac{s}{\sqrt{n}}
+\]</span></p>
+</div>
 </section>
 <section id="interactive-plot-of-the-sampling-distribution" class="slide level3">
 <h3>Interactive plot of the sampling distribution</h3>
@@ -593,11 +713,11 @@
 <li class="fragment">In the class notebook you can try and create a sampling distribution using Monte-Carlo simulation</li>
 </ul>
 </section>
-<section id="the-final-estimate-with-error" class="slide level3">
-<h3>The final estimate with error</h3>
+<section id="calculating-sem" class="slide level3">
+<h3>Calculating SEM</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="Images/fig1.png"></p>
+<p><img data-src="Images/fig5.png"></p>
 </div><div class="column" style="width:50%;">
 <table class="caption-top">
 <thead>
@@ -643,13 +763,13 @@
 </table>
 </div></div>
 </section>
-<section id="the-final-estimate-with-error-1" class="slide level3">
-<h3>The final estimate with error</h3>
+<section id="calculating-sem-1" class="slide level3">
+<h3>Calculating SEM</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="Images/fig1.png"></p>
+<p><img data-src="Images/fig5.png"></p>
 </div><div class="column" style="width:50%;">
-<div id="688f8aa3" class="cell" data-execution_count="4">
+<div id="688f8aa3" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="" aria-hidden="true" tabindex="-1"></a>dives <span class="op">=</span> pd.read_csv(<span class="st">'../Datasets/weddell_seal_dives.csv'</span>)</span>
 <span id="cb1-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> dives[<span class="st">'dive_duration_min'</span>].count()</span>
@@ -661,45 +781,53 @@
 <span id="cb1-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
 <span id="cb1-10"><a href="" aria-hidden="true" tabindex="-1"></a>sem <span class="op">=</span> dives[<span class="st">'dive_duration_min'</span>].sem()</span>
 <span id="cb1-11"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'n: </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb1-13"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'mean: </span><span class="sc">{</span>xbar<span class="sc">:.2f}</span><span class="ss"> mins'</span>)</span>
-<span id="cb1-14"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'std: </span><span class="sc">{</span>s<span class="sc">:.2f}</span><span class="ss"> mins'</span>)</span>
-<span id="cb1-15"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'SEM: </span><span class="sc">{</span>sem<span class="sc">:.2f}</span><span class="ss"> mins'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-12"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'n:    </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb1-13"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'xbar: </span><span class="sc">{</span>xbar<span class="sc">:.2f}</span><span class="ss"> mins'</span>)</span>
+<span id="cb1-14"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f's:    </span><span class="sc">{</span>s<span class="sc">:.2f}</span><span class="ss"> mins'</span>)</span>
+<span id="cb1-15"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'SEM:  </span><span class="sc">{</span>sem<span class="sc">:.2f}</span><span class="ss"> mins'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="4">
+<div class="cell fragment" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
-<pre><code>n: 10
-mean: 49.23 mins
-std: 3.61 mins
-SEM: 1.14 mins</code></pre>
+<pre><code>n:    10
+xbar: 49.23 mins
+s:    3.61 mins
+SEM:  1.14 mins</code></pre>
 </div>
 </div>
 </div></div>
 </section>
-<section id="the-final-estimate-with-error-2" class="slide level3">
-<h3>The final estimate with error</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="Images/fig1.png"></p>
-</div><div class="column" style="width:50%;">
-<p>The estimated mean dive duration of Weddell seals is</p>
-<p><span class="math inline">\(\hat{\mu}=\)</span> 49.2 ± 1.1 mins</p>
-<p>Average dive durations of Weddell seals is 49 minutes plus or minus 1 minute.</p>
-</div></div>
-</section>
-<section id="a-common-alternative-the-95-ci" class="slide level3">
-<h3>A common alternative: the 95% CI</h3>
+<section id="the-95-confidence-interval" class="slide level3">
+<h3>The 95% confidence interval</h3>
+<p>To calculate SEM we replaced the standard deviation of the population <span class="math inline">\(\sigma\)</span> (which we don’t know) with the standard deviation of the sample <span class="math inline">\(s\)</span> (which we do know)</p>
+<p><span class="math display">\[
+\text{SEM} = \frac{\text{Standard deviation of the sample}}{\text{Square root of number of observations}} = \frac{s}{\sqrt{n}}
+\]</span></p>
 <div class="fragment">
-<p><span class="math display">\[\hat{\mu} = \bar{x}\pm\text{SEM}\]</span></p>
-<p>is just one way of reporting a point estimate of the population mean with error.</p>
+<p>This assumes that <span class="math inline">\(s\)</span> is a good estimate of <span class="math inline">\(\sigma\)</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[\hat{\mu} = \bar{x}\pm t_{n-1}\times\text{SEM}\]</span></p>
-<p>is another common way and is called a 95% confidence interval (CI)</p>
+<p>But when the sample size is small, <span class="math inline">\(s\)</span> is <em>not</em> a good estimate of <span class="math inline">\(\sigma\)</span></p>
 </div>
 </section>
-<section id="a-common-alternative-the-95-ci-1" class="slide level3">
-<h3>A common alternative: the 95% CI</h3>
+<section id="the-95-confidence-interval-1" class="slide level3">
+<h3>The 95% confidence interval</h3>
+<p>The sample standard deviation <span class="math inline">\(s\)</span> underestimates the population standard deviation <span class="math inline">\(\sigma\)</span>.</p>
+<p>And the underestimate gets worse at smaller sample sizes</p>
+<div id="a560adcf" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-9-output-1.png" class="quarto-figure quarto-figure-center" width="485" height="420"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>So for small sample sizes we have to include a correction factor called <span class="math inline">\(t_{n-1}\)</span></p>
+</div>
+</section>
+<section id="the-95-confidence-interval-2" class="slide level3">
+<h3>The 95% confidence interval</h3>
 <p><span class="math display">\[\hat{\mu} = \bar{x}\pm t_{n-1}\times\text{SEM}\]</span></p>
 <p>The factor <span class="math inline">\(t_{n-1}\)</span> is a correction factor for small sample sizes.</p>
 <table class="caption-top">
@@ -741,26 +869,66 @@ SEM: 1.14 mins</code></pre>
 </tbody>
 </table>
 </section>
-<section id="a-common-alternative-the-95-ci-2" class="slide level3">
-<h3>A common alternative: the 95% CI</h3>
-<h5 id="a-rule-of-thumb">A rule of thumb:</h5>
-<p>For samples with more than 20 observations <span class="math inline">\(t_{n-1}\)</span> is about 2, i.e.,</p>
+<section id="the-95-confidence-interval-3" class="slide level3">
+<h3>The 95% confidence interval</h3>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p><br> <br> <br></p>
+<h4 id="a-rule-of-thumb">A rule of thumb:</h4>
+<p>For samples with more than 20 observations <span class="math inline">\(t_{n-1}\)</span> is about 2</p>
 <p><span class="math display">\[\hat{\mu} = \bar{x}\pm 2\times\text{SEM}\]</span></p>
-<div class="fragment">
-<p>For large enough samples, the 95% CI is about two times larger than the standard error.</p>
-</div>
+</div><div class="column" style="width:30%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><em>n</em></th>
+<th style="text-align: right;"><span class="math inline">\(t_{n-1}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">12.71</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2.78</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">2.26</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">2.09</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">2.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">1.98</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">500+</td>
+<td style="text-align: right;">1.96</td>
+</tr>
+</tbody>
+</table>
+</div></div>
 </section>
-<section id="a-common-alternative-the-95-ci-3" class="slide level3">
-<h3>A common alternative: the 95% CI</h3>
+<section id="the-95-confidence-interval-4" class="slide level3">
+<h3>The 95% confidence interval</h3>
 <p>The code to calculate <span class="math inline">\(t_{n-1}\)</span> is</p>
-<div id="86cee735" class="cell" data-execution_count="5">
+<div id="86cee735" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> t</span>
 <span id="cb3-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="" aria-hidden="true" tabindex="-1"></a>t_df <span class="op">=</span> t.ppf(<span class="fl">0.975</span>, df<span class="op">=</span><span class="dv">9</span>)</span>
 <span id="cb3-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f't_df = </span><span class="sc">{</span>t_df<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="5">
+<div class="cell fragment" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>t_df = 2.26</code></pre>
 </div>
@@ -769,68 +937,88 @@ SEM: 1.14 mins</code></pre>
 <p><code>df</code> stands for “degrees of freedom”. In this case it is one less than the sample size.</p>
 </div>
 </section>
-<section id="a-common-alternative-the-95-ci-4" class="slide level3">
-<h3>A common alternative: the 95% CI</h3>
-<p>For <em>n</em> = 10, <span class="math inline">\(t_{9}=\)</span> 2.26</p>
+<section id="the-final-estimate" class="slide level3">
+<h3>The final estimate</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="Images/fig5.png"></p>
+</div><div class="column" style="width:50%;">
 <div class="fragment">
-<p>95% CI are usually written as a range from the low bound to the high bound.</p>
+<p>From the sample we have</p>
+<p><span class="math display">\[
+\begin{align*}
+n &amp;= 10 \\
+\bar{x} &amp;= 49.2\, \text{mins} \\
+\text{SEM} &amp;= 1.14\, \text{mins} \\
+t_9 &amp;= 2.26
+\end{align*}
+\]</span></p>
 </div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{align*}
+\hat{\mu} &amp;= \bar{x}\pm t_{n-1}\times\text{SEM} \\
+\hat{\mu} &amp;= 49.2 \pm 2.26 \times 1.14 \\
+\hat{\mu} &amp;= 49.2 \pm 2.6\, \text{mins} \\
+\end{align*}
+\]</span></p>
+</div>
+</div></div>
+<div class="fragment">
+<p>In conclusion, mean dive durations are about 49 minutes with an uncertainty of plus/minus two and a half minutes.</p>
+</div>
+</section>
+<section id="the-95-confidence-interval-5" class="slide level3">
+<h3>The 95% confidence interval</h3>
+<p>95% CI are often written as a range from the low bound to the high bound.</p>
 <ul>
 <li class="fragment">low bound = <span class="math inline">\(\bar{x} - t_{n-1}\times\text{SEM}\)</span></li>
 <li class="fragment">high bound = <span class="math inline">\(\bar{x} + t_{n-1}\times\text{SEM}\)</span></li>
 </ul>
 <div class="fragment">
-<div id="e883726a" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a>ci_low <span class="op">=</span> xbar <span class="op">-</span> t_df <span class="op">*</span> sem</span>
+<div id="e883726a" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a>ci_low  <span class="op">=</span> xbar <span class="op">-</span> t_df <span class="op">*</span> sem</span>
 <span id="cb5-2"><a href="" aria-hidden="true" tabindex="-1"></a>ci_high <span class="op">=</span> xbar <span class="op">+</span> t_df <span class="op">*</span> sem</span>
 <span id="cb5-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'95% CI: [</span><span class="sc">{</span>ci_low<span class="sc">:.1f}</span><span class="ss">, </span><span class="sc">{</span>ci_high<span class="sc">:.1f}</span><span class="ss">] mins'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="6">
+<div class="cell fragment" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>95% CI: [46.6, 51.8] mins</code></pre>
 </div>
 </div>
 </div>
-</section>
-<section id="a-common-alternative-the-95-ci-5" class="slide level3">
-<h3>A common alternative: the 95% CI</h3>
 <ul>
-<li class="fragment"><p>The 95% CI of dive durations is [46.6, 51.8] mins.</p></li>
-<li class="fragment"><p>Many statistical software packages automatically calculate SEM and 95% CIs for you.</p></li>
+<li class="fragment">The 95% CI of dive durations is [46.6, 51.8] mins.</li>
 </ul>
 </section>
-<section id="visualising-point-estimates-and-their-errors" class="slide level3" data-auto-animate="true">
-<h3 data-id="quarto-animate-title">Visualising point estimates and their errors</h3>
+<section id="visualising-estimates" class="slide level3" data-auto-animate="true">
+<h3 data-id="quarto-animate-title">Visualising estimates</h3>
 <ul>
-<li class="fragment">Errors are graphically represented as error bars</li>
+<li class="fragment">Uncertainty in point estimates are graphically represented as error bars</li>
 <li class="fragment">Barplots are a common method</li>
 </ul>
 <div class="fragment">
-<div id="7077bed2" class="cell" data-id="graph2" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb7-1" class="hljs-ln-code"><a href="" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.barplot(data<span class="op">=</span>dives, y<span class="op">=</span><span class="st">'dive_duration_min'</span>, capsize<span class="op">=</span><span class="fl">.02</span>)<span class="op">;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb7-1" class="hljs-ln-code"><a href="" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.barplot(data<span class="op">=</span>dives, y<span class="op">=</span><span class="st">'dive_duration_min'</span>, capsize<span class="op">=</span><span class="fl">.02</span>)<span class="op">;</span></span>
 <span id="cb7-2" class="hljs-ln-code"><a href="" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Dive duration (mins)'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-id="graph2" data-execution_count="7">
-<div class="cell-output cell-output-display">
+<div class="fragment">
+<div data-id="fig6">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="588" height="402"></p>
+<p><img data-src="Images/fig6.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
-</div>
 </div>
 </div>
 </div>
 </section>
-<section id="error-bars-in-a-bar-plot" class="slide level3">
-<h3>Error bars in a bar plot</h3>
-<div id="93424338" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display">
+<section id="error-bars-in-a-bar-plot" class="slide level3" data-auto-animate="true">
+<h3 data-id="quarto-animate-title">Error bars in a bar plot</h3>
+<div data-id="fig6">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-9-output-1.png" class="quarto-figure quarto-figure-center" width="588" height="402"></p>
+<p><img data-src="Images/fig6.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
-</div>
 </div>
 </div>
 <p>A bar plot creates a bar with the bottom at zero and the top at the point estimate. The errorbar extends from the low bound to the high bound of the 95% CI.</p>
@@ -838,11 +1026,11 @@ SEM: 1.14 mins</code></pre>
 <section id="error-bars-in-a-bar-plot-1" class="slide level3">
 <h3>Error bars in a bar plot</h3>
 <p>These plots are more useful when comparing things. Dive durations of different seal species, for example.</p>
-<div id="ab7219fe" class="cell" data-execution_count="11">
+<div id="ab7219fe" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-12-output-1.png" class="quarto-figure quarto-figure-center" width="683" height="457"></p>
+<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-15-output-1.png" class="quarto-figure quarto-figure-center" width="683" height="457"></p>
 </figure>
 </div>
 </div>
@@ -851,11 +1039,11 @@ SEM: 1.14 mins</code></pre>
 <section id="error-bars-in-a-point-plot" class="slide level3">
 <h3>Error bars in a point plot</h3>
 <p>A point plot just plots a circle at the point estimate. This gives a less cluttered figure than a bar plot.</p>
-<div id="5e80d973" class="cell" data-execution_count="12">
+<div id="5e80d973" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-13-output-1.png" class="quarto-figure quarto-figure-center" width="683" height="457"></p>
+<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-16-output-1.png" class="quarto-figure quarto-figure-center" width="683" height="457"></p>
 </figure>
 </div>
 </div>
@@ -864,18 +1052,18 @@ SEM: 1.14 mins</code></pre>
 <section id="include-the-data" class="slide level3">
 <h3>Include the data</h3>
 <p>If there are not too many data including them can be useful to see the distribution of the data</p>
-<div id="47303b70" class="cell" data-execution_count="13">
+<div id="47303b70" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-14-output-1.png" class="quarto-figure quarto-figure-center" width="701" height="457"></p>
+<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-17-output-1.png" class="quarto-figure quarto-figure-center" width="683" height="457"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="error-bars-in-a-point-plot-1" class="slide level3">
-<h3>Error bars in a point plot</h3>
+<section id="always-state-what-your-error-bars-represent" class="slide level3">
+<h3>Always state what your error bars represent</h3>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -889,11 +1077,11 @@ SEM: 1.14 mins</code></pre>
 </div>
 </div>
 </div>
-<div id="b0af1c9a" class="cell" data-execution_count="14">
+<div id="b0af1c9a" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-15-output-1.png" class="quarto-figure quarto-figure-center" width="701" height="457"></p>
+<p><img data-src="Class_9_lecture_files/figure-revealjs/cell-18-output-1.png" class="quarto-figure quarto-figure-center" width="683" height="457"></p>
 </figure>
 </div>
 </div>
@@ -901,13 +1089,7 @@ SEM: 1.14 mins</code></pre>
 </section>
 <section id="conclusion" class="slide level3">
 <h3>Conclusion</h3>
-<div class="center">
-<p>Estimate of population parameter = Point estimate ± Standard error</p>
-</div>
-<div class="fragment center">
-<p>For example, the estimate of a population mean:</p>
-<p><span class="math display">\[\hat{\mu} = \bar{x} \pm \frac{s}{\sqrt n}\]</span></p>
-</div>
+<p>Whenever we estimate a population parameter we must always include the uncertainty in that estimate.</p>
 </section>
 <section id="this-weeks-class-notebook" class="slide level3">
 <h3>This week’s class notebook</h3>
