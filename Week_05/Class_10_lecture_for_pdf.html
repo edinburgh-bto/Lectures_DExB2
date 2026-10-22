@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="Class_10_lecture_for_pdf_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Class_10_lecture_for_pdf_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Class_10_lecture_for_pdf_files/libs/quarto-html/popper.min.js"></script>
+<script src="Class_10_lecture_for_pdf_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Class_10_lecture_for_pdf_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Class_10_lecture_for_pdf_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Class_10_lecture_for_pdf_files/libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
+
+  <title>Significance testing</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Class_10_lecture_for_pdf_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Class_10_lecture_for_pdf_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="Class_10_lecture_for_pdf_files/libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link href="Class_10_lecture_for_pdf_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Class_10_lecture_for_pdf_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Class_10_lecture_for_pdf_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Class_10_lecture_for_pdf_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <style>
+  .reveal h1, .reveal h2, .reveal h3, .reveal h4 { text-align: center; }
+  </style>
+  <style>
+  .center { text-align: center; display: block; }
+  </style>
+  <style>
+  .orange { color: orange; display: block; }
+  </style>
+  <style>
+  .white { color: white; display: block; }
+  </style>
+  <style>
+  .reveal pre.sourceCode { font-size: 20px; }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Significance testing</h1>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="how-compatible-are-my-data" class="slide level3">
+<h3>How compatible are my data?</h3>
+<ul>
+<li class="fragment">How compatible are the data with the assumption that light conditions <strong>do not</strong> affect sunflower height?</li>
+<li class="fragment">How compatible are the data with the assumption that hyena laughter fundamental frequency is <strong>not correlated</strong> with age?</li>
+<li class="fragment">How compatible are the data with the assumption that average beak widths <strong>did not change</strong> between 1976 and 1978?</li>
+</ul>
+</section>
+<section id="how-compatible-are-my-data-1" class="slide level3">
+<h3>How compatible are my data?</h3>
+<ul>
+<li class="fragment">In all cases we assume either <strong>no effect</strong> or <strong>no correlation</strong> or <strong>no cause</strong> or <strong>no difference</strong></li>
+<li class="fragment">And then ask how compatible are the data under this assumption</li>
+<li class="fragment">This assumption is called a <strong>null hypothesis</strong>:
+<ul>
+<li class="fragment">How compatible are the data with the null hypothesis?</li>
+</ul></li>
+<li class="fragment">This is the question you always ask yourself when doing significance testing</li>
+</ul>
+</section>
+<section id="why-do-we-need-statistics" class="slide level3" data-background-image="Images/constellations.jpg">
+<h3><span style="color: white;">Why do we need statistics?</span></h3>
+<div class="white">
+<ul>
+<li class="fragment"><p>People are excellent at seeing patterns in completely random noise.</p></li>
+<li class="fragment"><p>This is called apophenia.</p></li>
+<li class="fragment"><p>Scientists are no different.</p></li>
+</ul>
+<p><br> <br> <br> <br> <br></p>
+<ul>
+<li class="fragment">They are excellent at seeing “interesting” results in their data if it confirms their pre-conceived biases even when their data are just noise and contain nothing of interest.</li>
+<li class="fragment">Statistics (when done properly) reduces the risk we make fools of ourselves by claiming noise in our data as something interesting.</li>
+</ul>
+</div>
+</section>
+<section id="unfortunately-statistics-is-often-not-done-properly" class="slide level3">
+<h3>Unfortunately, statistics is often not done properly</h3>
+<p>Scientists publish false and exaggerated claims</p>
+
+<img data-src="Images/ioannidis.png" class="quarto-figure quarto-figure-center r-stretch"><p>John Ioannadis found that <strong>one third</strong> of the most highly cited medical papers (1000+ citations) between 1997 and 2003 were either contradicted or found to have exaggerated results by subsequent studies</p>
+<ul>
+<li class="fragment"><p>in itself this is not a problem: science is self correcting - an honest mistake can be corrected when other scientists try to replicate early studies and fail</p></li>
+<li class="fragment"><p>but statistics done poorly—leading to exaggerated claims—wastes time, money and resources</p></li>
+</ul>
+</section>
+<section id="why-is-statistics-not-done-properly" class="slide level3">
+<h3>Why is statistics not done properly?</h3>
+<h4 id="a-brief-history-of-stats">A brief history of stats</h4>
+<ul>
+<li class="fragment"><p>You may have formed the impression, given how you were taught in School and in Year 1 of University, that the way statistics is done is a given truth. That there is just one way to do statistics.</p></li>
+<li class="fragment"><p>This is not true.</p></li>
+<li class="fragment"><p>The concepts and methods most scientists currently use were developed in the mid-20th century.</p></li>
+<li class="fragment"><p>21st-century statistics is moving on, but many scientists still use the old methods because that is the way they were taught.</p></li>
+<li class="fragment"><p>It’s useful to know a little of the history of stats in order to understand the current state of affairs.</p></li>
+</ul>
+</section>
+<section id="fisherian-view" class="slide level3">
+<h3>Fisherian view</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="Images/fisher.jpeg"></p>
+</div><div class="column" style="width:70%;">
+<div class="fragment">
+<p>Fisher was a brilliant but controversial figure. He is one of the founders of the modern synthesis of Darwinian natural selection, Mendelian genetics and population genetics.</p>
+</div>
+<div class="fragment">
+<p>His foundational statistical work was published in 1925, <em>Statistics for Research Workers</em>, in which he sought:</p>
+<blockquote>
+<p>“to put into the hands of research workers, and especially of biologists, the means of applying statistical tests accurately to numerical data.”</p>
+</blockquote>
+</div>
+</div></div>
+</section>
+<section id="fisherian-view-1" class="slide level3">
+<h3>Fisherian view</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="Images/fisher.jpeg"></p>
+</div><div class="column" style="width:70%;">
+<ul>
+<li class="fragment">His view was that we collect data and use it to measure the strength of evidence against the null hypothesis.</li>
+<li class="fragment">The strength of evidence against the null is termed <em>P</em> (for probability) with a value between 0 and 1.</li>
+<li class="fragment">If <em>P</em> is high: the data are compatible with the null - the difference observed is likely due to random chance</li>
+<li class="fragment">If <em>P</em> is low: the data are incompatible with the null - the difference observed is not likely due to random chance but due to something real</li>
+</ul>
+</div></div>
+</section>
+<section id="fisherian-view-2" class="slide level3">
+<h3>Fisherian view</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="Images/fisher.jpeg"></p>
+</div><div class="column" style="width:70%;">
+<ul>
+<li class="fragment"><p>Fisher formalised and popularised the term “statistically significant”. So his method is thought of as a “significance test”.</p></li>
+<li class="fragment"><p>He is also credited (blamed) for the 5% cut-off for <em>P</em> below which a test is deemed “statistically significant”.</p></li>
+<li class="fragment"><p>But this is not quite true. Fisher viewed <em>P</em> as a continuous measure of the strength of evidence against the null hypothesis, rather than a binary “significant/not significant” decision.</p></li>
+</ul>
+</div></div>
+</section>
+<section id="neyman-pearson-view" class="slide level3">
+<h3>Neyman-Pearson view</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="Images/neymanpearson.jpg"></p>
+</div><div class="column" style="width:70%;">
+<ul>
+<li class="fragment"><p>Neyman was a Polish mathematician and Pearson was a British statistician.</p></li>
+<li class="fragment"><p>Published in 1933; more holistic method than Fisher’s. How one should plan experiments and what to decide once an experiment is complete.</p></li>
+<li class="fragment"><p>Their method says you must make a yes/no decision about the truth of the null hypothesis. So their method is thought of as a “hypothesis test”</p></li>
+</ul>
+</div></div>
+</section>
+<section id="bayesian-view" class="slide level3">
+<h3>Bayesian view</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Images/Thomas_Bayes.gif"></p>
+<figcaption>Maybe Thomas Bayes 1701-1761</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:70%;">
+<ul>
+<li class="fragment"><p>The Reverend Thomas Bayes was a student at Edinburgh University 300 years ago.</p></li>
+<li class="fragment"><p>Bayesian concepts came before Fisher, Neyman and Pearson.</p></li>
+<li class="fragment"><p>They have been further developed in the last 75 years.</p></li>
+<li class="fragment"><p>But required the advent of modern computers to become a useful statistical method.</p></li>
+<li class="fragment"><p>How to update your personal degree of belief in something (e.g., a parameter value, a set of hypotheses)</p></li>
+</ul>
+</div></div>
+</section>
+<section id="bayesian-view-1" class="slide level3">
+<h3>Bayesian view</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Images/Thomas_Bayes.gif"></p>
+<figcaption>Maybe Thomas Bayes 1701-1761</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:70%;">
+<div class="fragment">
+<p><strong>First state your prior belief</strong></p>
+<p>Before doing an experiment quantify your personal prior belief based on expert knowledge, previous studies, etc</p>
+</div>
+<ul>
+<li class="fragment">For example, I believe the odds of Darwinian natural selection against Lamarckism is 10:1</li>
+</ul>
+<div class="fragment">
+<p><strong>Next collect some data to update your belief</strong></p>
+</div>
+<ul>
+<li class="fragment">I now believe the odds of Darwinian natural selection against Lamarckism is 100:1</li>
+</ul>
+</div></div>
+</section>
+<section id="bayesian-view-2" class="slide level3">
+<h3>Bayesian view</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Images/Thomas_Bayes.gif"></p>
+<figcaption>Maybe Thomas Bayes 1701-1761</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:70%;">
+<p><strong>And repeat</strong></p>
+<ul>
+<li class="fragment"><p>Use your new belief and new experiments to further update your belief, and so on…</p></li>
+<li class="fragment"><p>Requires a working knowledge of probability distributions, some maths such as integration and the ability to transform mathematical equations into computer code.</p></li>
+<li class="fragment"><p>So we won’t consider this any further.</p></li>
+</ul>
+</div></div>
+</section>
+<section id="likelihood-view" class="slide level3">
+<h3>Likelihood view</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="quarto-layout-panel" data-layout-nrow="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<p><img data-src="Images/fisher.jpeg" style="width:44.0%"> <img data-src="Images/Samuel_S_Wilks.jpg" style="width:50.0%"> <img data-src="Images/neymanpearson.jpg" style="width:97.0%"></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
+<ul>
+<li class="fragment"><p>Developed in the 1930s by Fisher, Neyman, Pearson, Samuel Wilks, an American mathematician</p></li>
+<li class="fragment"><p>Calculate the relative strength of evidence of one hypothesis over another</p></li>
+<li class="fragment"><p>Again requires mathematical and coding knowledge, so we won’t consider this any further.</p></li>
+</ul>
+</div></div>
+</section>
+<section id="different-statistical-philosophies" class="slide level3">
+<h3>Different statistical philosophies</h3>
+<ul>
+<li class="fragment"><p>Fisher asks: What is the strength of evidence in my data against a <strong>null hypothesis</strong>?</p></li>
+<li class="fragment"><p>Neyman-Pearson ask: In deciding for or against my <strong>null hypothesis</strong>, how many errors would I be willing to make if I were to repeat my experiment a large number of times?</p></li>
+<li class="fragment"><p>Bayes asks: By how much does my data update my beliefs in my <strong>competing hypotheses</strong>?</p></li>
+<li class="fragment"><p>Likelihood asks: What are the relative strengths of evidence between my <strong>competing hypotheses</strong> given my data?</p></li>
+</ul>
+</section>
+<section id="how-statistics-is-used-by-most-biologists" class="slide level3">
+<h3>How statistics is used by most biologists</h3>
+<ul>
+<li class="fragment"><p>Almost all biologists were educated in “classical statistics”, also called “frequentist statistics”.</p></li>
+<li class="fragment"><p>Classical statistics has been called an “inconsistent mishmash” of Fisherian and Neyman-Pearson methods<sup>1</sup>.</p>
+<ul>
+<li class="fragment">(This was thought to come about because Fisher and Neyman were bitter rivals with strong personalities, and 20<sup>th</sup>-century textbook authors didn’t want to take sides, so they combined the two methods into a single method which is still taught and used today.)</li>
+</ul></li>
+<li class="fragment"><p>It’s fair to say that most biologists are confused about statistics.</p></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Gigerenzer G (1998) We need statistical thinking, not statistical rituals. Behav Brain Sci 21:199–20</p></li></ol></aside></section>
+<section id="how-statistics-is-used-by-most-biologists-1" class="slide level3">
+<h3>How statistics is used by most biologists</h3>
+<ul>
+<li class="fragment"><p>Most biologists think like Bayesians (multiple sources of evidence accumulated over time makes a hypothesis ever more or less likely).</p></li>
+<li class="fragment"><p>But when publishing research, most biologists use classical statistics (testing only null hypotheses and declaring any test that gives <em>P</em> &lt; 0.05 as statistically significant).</p></li>
+</ul>
+</section>
+<section id="how-statistics-is-used-by-most-biologists-2" class="slide level3">
+<h3>How statistics is used by most biologists</h3>
+<ul>
+<li class="fragment"><p>But classical statistics is easy to misunderstand which causes biologists to</p>
+<ul>
+<li class="fragment">unintentionally claim a significant result when it is not (very common)</li>
+<li class="fragment">misuse it to fraudulently claim a significant result when it is not (rare)
+<ul>
+<li class="fragment">Why? Because there is an incentive to cheat: scientific credibility, promotion, grant funding and publishing is contingent upon producing statistically significant science.</li>
+</ul></li>
+</ul></li>
+<li class="fragment"><p>Having said that, classical statistics mostly works for most biologists most of the time — discoveries are still made.</p></li>
+</ul>
+</section>
+<section id="the-source-of-the-problem-p-0.05" class="slide level3">
+<h3>The source of the problem: <em>P</em> &lt; 0.05</h3>
+<ul>
+<li class="fragment"><p>In unthinking classical statistics:</p>
+<ul>
+<li class="fragment">If <em>P</em> &lt; 0.05 we reject the null hypothesis and declare a “statistically significant result”</li>
+<li class="fragment">If <em>P</em> &gt; 0.05 we do not reject the null hypothesis and declare a “statistically non-significant result”</li>
+</ul></li>
+<li class="fragment"><p>However, the threshold of 0.05 (or any threshold for that matter) is completely arbitrary and has no scientific justification.</p></li>
+<li class="fragment"><p>Its adoption in 20<sup>th</sup>-century textbooks forced biologists into pursuing the holy-grail of <em>P</em> &lt; 0.05.</p></li>
+</ul>
+</section>
+<section id="how-p-0.05-became-significant" class="slide level3">
+<h3>How <em>P</em> &lt; 0.05 became “significant”</h3>
+<p>Fisher viewed <em>P</em> as a continuous measure of evidence against the null hypothesis, e.g.,</p>
+<ul>
+<li class="fragment"><em>P</em> = 0.2: insufficient evidence against the null hypothesis</li>
+<li class="fragment"><em>P</em> = 0.0002 is very strong evidence against the null hypothesis</li>
+</ul>
+<div class="fragment">
+<p>so it’s exact value is important.</p>
+</div>
+</section>
+<section id="how-p-0.05-became-significant-1" class="slide level3">
+<h3>How <em>P</em> &lt; 0.05 became “significant”</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>However, 100 years ago, before computers, manually calculating the exact value of <em>P</em> was very tedious.</p></li>
+<li class="fragment"><p>Instead statisticians used tables for various tests (e.g., <em>t</em>, <span class="math inline">\(\chi^2\)</span>, <em>F</em>) at fixed levels of <em>P</em>.</p></li>
+<li class="fragment"><p>Such tables were of immense benefit and a huge time saver for non-mathematically inclined scientists.</p></li>
+<li class="fragment"><p>So they became a core tool in the statistical analysis of data.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="Images/ttable.png"></p>
+</div></div>
+</section>
+<section id="how-p-0.05-became-significant-2" class="slide level3">
+<h3>How <em>P</em> &lt; 0.05 became “significant”</h3>
+<p>In addition, Fisher said in his 1925 book:</p>
+<blockquote>
+<p>“It is <em>convenient</em> to take this point [0.05] as a limit in judging whether a result is to be considered significant or not.”</p>
+</blockquote>
+<div class="fragment">
+<p>This convenience became, over many years, an arbitrary convention:</p>
+</div>
+<ul>
+<li class="fragment"><em>P</em> &gt; 0.05: “not significant”, an uninteresting, unpublishable result</li>
+<li class="fragment"><em>P</em> &lt; 0.05: “significant”, an interesting, publishable result</li>
+</ul>
+<div class="fragment">
+<p>And this is how <em>P</em> &lt; 0.05 came to mean “significant”.</p>
+</div>
+</section>
+<section id="how-p-0.05-became-significant-3" class="slide level3">
+<h3>How <em>P</em> &lt; 0.05 became “significant”</h3>
+<p>But for Fisher <em>P</em> &lt; 0.05 was a flexible, informal rule of thumb, not a scientific law.</p>
+<p>In 1956 he wrote:</p>
+<blockquote>
+<p>“…no scientific worker has a fixed level of significance [e.g., 0.05] at which from year to year, and in all circumstances, he rejects hypotheses; he rather gives his mind to each particular case in the light of his evidence and his ideas.”</p>
+</blockquote>
+<div class="fragment orange">
+<p><em>P</em> &lt; 0.05 is a completely arbitrary convention with no scientific justification.</p>
+</div>
+</section>
+<section id="searching-for-significance" class="slide level3">
+<h3>Searching for significance</h3>
+<h4 id="or-how-scientists-make-non-significant-results-significant">Or how scientists make non-significant results significant</h4>
+<ul>
+<li class="fragment">Removing data that look like outliers</li>
+<li class="fragment">Disregarding some of the data based on other variables</li>
+<li class="fragment">Trying different statistical tests until one gives <em>P</em> &lt; 0.05</li>
+<li class="fragment">Not correcting for multiple tests</li>
+</ul>
+<div class="fragment orange">
+<p>This is called p-hacking and should not be done.</p>
+</div>
+</section>
+<section id="searching-for-significance-removing-outliers" class="slide level3">
+<h3>Searching for significance: Removing “outliers”</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="center">“Outlier” not removed</span></p>
+<div id="b3880c10" class="cell" data-fig-width="10px" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Class_10_lecture_for_pdf_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="600" height="456"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><span class="center">“Outlier” removed</span></p>
+<div id="822d8517" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Class_10_lecture_for_pdf_files/figure-revealjs/cell-7-output-1.png" width="600" height="456"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="searching-for-significance-discarding-subsets-of-data" class="slide level3">
+<h3>Searching for significance: Discarding subsets of data</h3>
+<h4 id="also-called-slicing-and-dicing.">Also called “slicing and dicing”.</h4>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment" data-fragment-index="1">
+<p>For example, you plant 20 tulips and apply two different fertilisers called A and B. Six months later you measure their height all on the same day.</p>
+</div>
+<div class="fragment" data-fragment-index="2">
+<p>You get a non-significant difference in heights between the two fertilisers of <em>P</em> = 0.08, which is close to 0.05.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment" data-fragment-index="1">
+<div id="9efaa063" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Class_10_lecture_for_pdf_files/figure-revealjs/cell-10-output-1.png" width="497" height="466"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="searching-for-significance-discarding-subsets-of-data-1" class="slide level3">
+<h3>Searching for significance: Discarding subsets of data</h3>
+<p>Being a good scientist you recorded the time of day you measured each plant. You measured half the tulips in the morning and the other half in the afternoon.</p>
+<div class="fragment">
+<p>So you split the data into morning and afternoon measurements.</p>
+</div>
+<div class="fragment">
+<div id="4348d0ee" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Class_10_lecture_for_pdf_files/figure-revealjs/cell-11-output-1.png" width="999" height="466"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="searching-for-significance-discarding-subsets-of-data-2" class="slide level3">
+<h3>Searching for significance: Discarding subsets of data</h3>
+<p>In the search for significance you justify to yourself that the afternoon measurements are unreliable—perhaps you had large lunch that made you drowsy and more error prone—so you discard them, never mentioning that you threw away some data.</p>
+<div class="fragment">
+<p>And you end up with a statistically significant result.</p>
+<div id="9aaa4ce8" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Class_10_lecture_for_pdf_files/figure-revealjs/cell-12-output-1.png" class="quarto-figure quarto-figure-center" width="497" height="466"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="modern-guidance" class="slide level3">
+<h3>Modern Guidance</h3>
+<ul>
+<li class="fragment"><p>Modern statisticians prefer to think of the <strong>compatibility</strong> of the data with the null hypothesis. This is more intuitive than Fisher’s “evidence against the null”.</p></li>
+<li class="fragment"><p>The American Statistical Association now recommends avoiding rigid thresholds and labels like “significant” or “highly significant.” Instead, they suggest:</p>
+<ul>
+<li class="fragment">Reporting the exact <em>P</em>-value and letting readers judge the strength of compatibility.</li>
+<li class="fragment">Describing results in context, considering effect sizes, confidence intervals, and the broader scientific question.</li>
+<li class="fragment">Avoiding dichotomous thinking like significant/not significant or reject/fail to reject.</li>
+</ul></li>
+</ul>
+</section>
+<section id="how-to-prevent-mistakes-and-misuse" class="slide level3">
+<h3>How to prevent mistakes and misuse</h3>
+<ul>
+<li class="fragment">In the experimental design stage, state which statistical tests will be used</li>
+<li class="fragment">Publish the statistical analysis plan on a dedicated website</li>
+<li class="fragment">Follow the plan</li>
+<li class="fragment">Make avaliable the raw data so that others can replicate your work</li>
+<li class="fragment">Any unplanned analysis (called post-hoc analysis) should be reported as preliminary and requiring further study</li>
+</ul>
+</section>
+<section id="what-you-should-take-away-from-this-lecture" class="slide level3">
+<h3>What you should take away from this lecture</h3>
+<ul>
+<li class="fragment">Classical statistics (the one you will see and use most) is
+<ul>
+<li class="fragment">the simplest way of doing statistics (does not require mathematical and computational skills)</li>
+<li class="fragment">but not the only way of doing statistics</li>
+<li class="fragment">the least useful way of doing statistics (testing the single null hypothesis of no effect or difference)</li>
+<li class="fragment">easily misunderstood and misused (due to the arbitrary significance threshold of <em>P</em> &lt; 0.05)</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-you-should-take-away-from-this-lecture-1" class="slide level3">
+<h3>What you should take away from this lecture</h3>
+<ul>
+<li class="fragment">The best way to interpret <em>P</em> is as the compatibility of the data with the null hypothesis
+<ul>
+<li class="fragment">always report the exact value of <em>P</em> rather than, say <em>P</em> &lt; 0.05 which is ambiguous</li>
+<li class="fragment">always report the size of the effect or difference either with standard error or 95% CI</li>
+<li class="fragment">always report which statistical test you used (e.g, two-sample <em>t</em>-test, ANOVA)</li>
+<li class="fragment">always report the value of the test statistic and the sample size (or degrees of freedom)</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-you-should-take-away-from-this-lecture-2" class="slide level3">
+<h3>What you should take away from this lecture</h3>
+<ul>
+<li class="fragment">Be sceptical and critical of significant results when <em>P</em> is just below 0.05
+<ul>
+<li class="fragment">the incompatibility of the data with the null hypothesis is weak</li>
+<li class="fragment">the data may have been manipulated to get <em>P</em> below 0.05 (this is more common than you may think)</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-you-should-take-away-from-this-lecture-3" class="slide level3">
+<h3>What you should take away from this lecture</h3>
+<ul>
+<li class="fragment">If <em>P</em> is just above 0.05 do not make the mistake of thinking that more data will bring <em>P</em> below 0.05 — it could go either way. This is a very common mistake that students make in their final year projects.</li>
+</ul>
+</section>
+<section id="what-you-should-take-away-from-this-lecture-4" class="slide level3">
+<h3>What you should take away from this lecture</h3>
+<ul>
+<li class="fragment">Do not p-hack and try not to be pressurised into p-hacking by your supervisors</li>
+</ul>
+</section>
+<section id="what-you-should-take-away-from-this-lecture-5" class="slide level3">
+<h3>What you should take away from this lecture</h3>
+<ul>
+<li class="fragment">If you need to use statistics seriously in your post-undergraduate career learn Bayesian statistics</li>
+</ul>
+</section>
+<section id="this-weeks-class-notebook" class="slide level3">
+<h3>This week’s class notebook</h3>
+<p>Five questions on five common statistical tests:</p>
+<ol type="1">
+<li class="fragment"><strong>Two-sample t-test</strong>: When you want to compare the means of a numerical variable across two independent groups.</li>
+<li class="fragment"><strong>Shapiro-Wilks test</strong>: When your want to see if your data is compatible with being normally distributed.</li>
+<li class="fragment"><strong>Pearson correlation test</strong>: When you want to examine the correlation between two numerical variables.</li>
+<li class="fragment"><strong>Linear regression</strong>: When you want to examine the numerical relationship between two numerical variables, e.g., “How does a change in X affect Y?” where X and Y are numerical variables.</li>
+<li class="fragment"><strong>Anova</strong>: When you want to compare the means of a numerical variable across three or more independent groups.</li>
+</ol>
+
+</section>
+
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Class_10_lecture_for_pdf_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Class_10_lecture_for_pdf_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Class_10_lecture_for_pdf_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Class_10_lecture_for_pdf_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Class_10_lecture_for_pdf_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Class_10_lecture_for_pdf_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Class_10_lecture_for_pdf_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Class_10_lecture_for_pdf_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Class_10_lecture_for_pdf_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Class_10_lecture_for_pdf_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
