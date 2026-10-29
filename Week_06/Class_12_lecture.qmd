@@ -1,4 +1,6 @@
-Multiple testing
+# Multiple testing
+
+## Lecture
 
 ### The problem with multiple testing
 
@@ -20,7 +22,7 @@ and again p < 0.05 : a false positive (we declared it as sig, when we know it ha
 
 Let's do 100 experiments and plot the p-values of these in a histogram
 
-5 false positive (or 5% if experiments give false positive results)
+5 false positive (or 5% of experiments give false positive results)
 
 If the null hypothesis is true, 5% of your experiments will give a false positive.
 
@@ -32,6 +34,9 @@ If the null hypothesis is true, 5% of your experiments will give a false positiv
         - A small number of pre-specified comparisons
         - Confirmatory / significance testing studies
 
+- Bonferroni method
+    - No longer recommended as too conservative, use Holm instead
+
 - The Benjamini–Hochberg method (published in 1995)
     - Use when you're screening and can tolerate some false leads
         - Genomics, proteomics, neuroimaging (hundreds–thousands of tests)
@@ -40,4 +45,31 @@ If the null hypothesis is true, 5% of your experiments will give a false positiv
 
 ### Holm: Comparing treatments to a control
 
+plant growth
+ANOVA first, then compare treatments to control
+workflow notebook
+
 ### Benjamini–Hochberg:
+
+Gene expression
+BH
+volcano plot
+workflow notebook
+
+## Workflow notebooks
+
+plant growth: holm cf to control
+sepal with: holm all pairwise
+gene expression: benjamimi-hochberg
+
+
+## Class notebook
+
+1. light on knees: compare 2 treatments to control
+2. nectar: anova, pairwise comparison (pairwise holm)
+3. drug screening: benjamini-hochberg
+
+# TODO
+
+homework?
+quiz for week 7
