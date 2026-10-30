@@ -659,8 +659,8 @@
 
 </div>
 <img data-src="Class_12_lecture_files/figure-revealjs/cell-11-output-1.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="first-do-an-anova-omnibus-test" class="slide level3">
-<h3>First do an ANOVA “omnibus” test</h3>
+<section id="step-1-do-an-anova-omnibus-test" class="slide level3">
+<h3>Step 1: Do an ANOVA “omnibus” test</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Check the compatibility of the data with the null hypothesis that all means are the same.</p>
@@ -768,8 +768,8 @@
 </div>
 </div>
 </section>
-<section id="first-do-an-anova-omnibus-test-1" class="slide level3">
-<h3>First do an ANOVA “omnibus” test</h3>
+<section id="step-1-do-an-anova-omnibus-test-1" class="slide level3">
+<h3>Step 1: Do an ANOVA “omnibus” test</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Both give the same result</p>
@@ -777,14 +777,14 @@
 <li class="fragment"><p><em>F</em><sub>2,25</sub> = 5.59</p></li>
 <li class="fragment"><p><em>P</em> = 0.0098</p></li>
 <li class="fragment"><p>Conclusion: At least one mean is different from at least one of the others.</p></li>
-<li class="fragment"><p>But which ones are different?</p></li>
+<li class="fragment"><p>But are the treatments different to the control?</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><img data-src="Images/plant_growth_data.png" width="500"></p>
 </div></div>
 </section>
-<section id="second-compare-the-treatments-to-the-control" class="slide level3">
-<h3>Second compare the treatments to the control</h3>
+<section id="step-2-compare-the-treatments-to-the-control" class="slide level3">
+<h3>Step 2: Compare the treatments to the control</h3>
 <p>We need the raw <em>P</em>-values of the significance tests which we can obtain from the linear model</p>
 <div id="482f9b46" class="cell" data-execution_count="96">
 <div class="cell-output cell-output-display" data-execution_count="96">
@@ -835,8 +835,8 @@
 <li class="fragment">Treatment 2 vs.&nbsp;control: <em>P</em><sub>raw</sub> = 0.047</li>
 </ul>
 </section>
-<section id="adjust-the-raw-p-values-for-multiple-testing" class="slide level3">
-<h3>Adjust the raw <em>P</em>-values for multiple testing</h3>
+<section id="step-3-adjust-the-raw-p-values-for-multiple-testing" class="slide level3">
+<h3>Step 3: Adjust the raw <em>P</em>-values for multiple testing</h3>
 <div id="df73475e" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.multitest <span class="im">import</span> multipletests</span>
 <span id="cb6-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
@@ -857,7 +857,7 @@
 <li class="fragment">Treatment 2 vs.&nbsp;control: <em>P</em><sub>adj</sub> = 0.095, not significant</li>
 </ul>
 <div class="fragment">
-<p>Conclusion: <strong>neither fertiliser changed plant biomass</strong></p>
+<p>Conclusion: <strong>No evidence either fertiliser changed plant biomass</strong></p>
 </div>
 <div class="fragment">
 <p>By correcting for multiple testing we reduced the risk of making false claims.</p>
@@ -880,10 +880,10 @@
 <h3>Load and print the data</h3>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div id="73b31110" class="cell">
+<div id="73b31110" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="" aria-hidden="true" tabindex="-1"></a>rna <span class="op">=</span> pd.read_csv(<span class="st">'../Datasets/airway_merged_data_cleaned.csv'</span>)</span>
 <span id="cb8-2"><a href="" aria-hidden="true" tabindex="-1"></a>rna.head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="98">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -996,23 +996,16 @@
 </ul>
 </div></div>
 </section>
-<section id="plot-the-read-counts-for-a-random-gene" class="slide level3">
-<h3>Plot the read counts for a random gene</h3>
+<section id="plot-the-read-counts-for-the-first-gene" class="slide level3">
+<h3>Plot the read counts for the first gene</h3>
 <p>We have to log-transform RNA read counts (explained why in the workflow notebook)</p>
-<div id="b5c35671" class="cell" data-execution_count="133">
+<div id="b5c35671" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a>sns.swarmplot(data<span class="op">=</span>rna.query(<span class="st">'gene_id == "E000003"'</span>), y<span class="op">=</span><span class="st">'log count'</span>, x<span class="op">=</span><span class="st">'dex'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="Class_12_lecture_files/figure-revealjs/cell-18-output-1.png" class="r-stretch"></section>
-<section id="plot-the-rna-read-counts-for-all-genes" class="slide level3">
-<h3>Plot the RNA read counts for all genes</h3>
-<div id="998351ea" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="" aria-hidden="true" tabindex="-1"></a>sns.displot(data<span class="op">=</span>rna, x<span class="op">=</span><span class="st">'log count'</span>, col<span class="op">=</span><span class="st">'dex'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-
-</div>
-<img data-src="Class_12_lecture_files/figure-revealjs/cell-19-output-1.png" class="r-stretch"></section>
-<section id="first-perform-a-t-test-on-each-gene" class="slide level3">
-<h3>First perform a <em>t</em>-test on each gene</h3>
+<section id="step-1-perform-a-t-test-on-each-gene" class="slide level3">
+<h3>Step 1: Perform a <em>t</em>-test on each gene</h3>
 <ul>
 <li class="fragment"><p>Null hypothesis: mean read counts are the same for treated and untreated cell lines for each gene</p></li>
 <li class="fragment"><p>There are 25,403 genes</p></li>
@@ -1022,32 +1015,109 @@
 <li class="fragment"><p>We need to filter out as many false positives as possible</p></li>
 </ul>
 </section>
-<section id="first-perform-a-t-test-on-each-gene-1" class="slide level3">
-<h3>First perform a <em>t</em>-test on each gene</h3>
-<h4 id="distribution-of-raw-p-values-for-25403-genes">Distribution of raw <em>P</em>-values for 25,403 genes</h4>
-<div class="columns">
-<div class="column" style="width:60%;">
+<section id="step-1-perform-a-t-test-on-each-gene-1" class="slide level3 scrollable">
+<h3>Step 1: Perform a <em>t</em>-test on each gene</h3>
 <p>The code to do this is in the workflow notebook.</p>
-<div id="f6f860f5" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
+<div id="8112720d" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
-<figure>
-<p><img data-src="Class_12_lecture_files/figure-revealjs/cell-20-output-1.png"></p>
-</figure>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">gene_id</th>
+<th data-quarto-table-cell-role="th">p_raw</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>E000003</td>
+<td>0.154514</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>E000419</td>
+<td>0.925824</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>E000457</td>
+<td>0.527302</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>E000460</td>
+<td>0.443651</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>E000971</td>
+<td>0.598771</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">25398</th>
+<td>E273477</td>
+<td>0.698030</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">25399</th>
+<td>E273483</td>
+<td>0.473038</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">25400</th>
+<td>E273486</td>
+<td>0.510124</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">25401</th>
+<td>E273487</td>
+<td>0.029086</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">25402</th>
+<td>E273488</td>
+<td>0.874195</td>
+</tr>
+</tbody>
+</table>
+
+<p>25403 rows × 2 columns</p>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:40%;">
-<div class="fragment">
-<p><br> <br> <br> <br> There are 2,432 genes with <em>P</em> &lt; 0.05</p>
-</div>
-</div></div>
 </section>
-<section id="adjust-raw-p-values-using-the-benjamini-hochberg-method" class="slide level3 scrollable">
-<h3>Adjust raw <em>P</em>-values using the Benjamini-Hochberg method</h3>
+<section id="step-1-perform-a-t-test-on-each-gene-2" class="slide level3">
+<h3>Step 1: Perform a <em>t</em>-test on each gene</h3>
+<h4 id="distribution-of-raw-p-values-for-25403-genes">Distribution of raw <em>P</em>-values for 25,403 genes</h4>
+
+<img data-src="Class_12_lecture_files/figure-revealjs/cell-20-output-1.png" class="quarto-figure quarto-figure-center r-stretch"><p>There are 2,432 genes with <em>P</em> &lt; 0.05</p>
+</section>
+<section id="step-2-adjust-raw-p-values-using-the-benjamini-hochberg-method" class="slide level3 scrollable">
+<h3>Step 2: Adjust raw <em>P</em>-values using the Benjamini-Hochberg method</h3>
 <div id="10ef4ebe" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="" aria-hidden="true" tabindex="-1"></a>results_df[<span class="st">'p_adj'</span>] <span class="op">=</span> multipletests(results_df[<span class="st">'p_raw'</span>], method<span class="op">=</span><span class="st">'fdr_bh'</span>)[<span class="dv">1</span>]</span>
-<span id="cb11-2"><a href="" aria-hidden="true" tabindex="-1"></a>results_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="" aria-hidden="true" tabindex="-1"></a>results_df[<span class="st">'p_adj'</span>] <span class="op">=</span> multipletests(results_df[<span class="st">'p_raw'</span>], method<span class="op">=</span><span class="st">'fdr_bh'</span>)[<span class="dv">1</span>]</span>
+<span id="cb10-2"><a href="" aria-hidden="true" tabindex="-1"></a>results_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
 <div class="cell-output cell-output-display" data-execution_count="5">
